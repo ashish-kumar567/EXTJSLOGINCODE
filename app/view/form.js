@@ -2,6 +2,7 @@ Ext.define('AkApp.view.form', {
     extend: 'Ext.form.Panel',
     title: 'User Form',
     xtype:'newform',
+    id : 'newform',
     //layout : 'fit',
     height: 400,
     width: 300,
@@ -15,12 +16,12 @@ Ext.define('AkApp.view.form', {
 
 
    
-    store : "formstore",
+    store: {type: 'formstore'},
     items: [
         {
             xtype: 'textfield',
             fieldLabel: 'Student Name',
-            name: 'student name',
+            name: 'studentname',
             allowBlank: false,
             minLength : 3,
             
@@ -29,7 +30,7 @@ Ext.define('AkApp.view.form', {
         {
             xtype: 'textfield',
             fieldLabel: 'Fathers Name',
-            name: 'father name',
+            name: 'fathersname',
             allowBlank: false,
             minLength : 3,
             flex: 1
@@ -37,7 +38,7 @@ Ext.define('AkApp.view.form', {
         {
             xtype: 'textfield',
             fieldLabel: 'Mothers Name',
-            name: 'mother  name',
+            name: 'mothersname',
             allowBlank: false,
             minLength : 3,
             flex: 1
@@ -77,13 +78,13 @@ Ext.define('AkApp.view.form', {
         {
             xtype: 'numberfield',
             fieldLabel: 'Fee Paid',
-            name: 'fee paid',
+            name: 'feepaid',
             allowBlank: false,
         },
         {
             xtype: 'combobox',
             fieldLabel: 'Extra Curricular',
-            name: 'activities',
+            name: 'extracircullar',
             flex: 1,
             store: Ext.create('Ext.data.Store', {
 
@@ -107,36 +108,47 @@ Ext.define('AkApp.view.form', {
              valueField: 'abbr',
              displayField: 'name'
         },
-         { 
+        
+        //   {
+        //     buttons: [{
+        //         formBind: true,
+        //         listeners: {
+        //         click: 'onButtonClick'
+        //         }
+        //     }],
+        // },
+
+          { 
             xtype:'button',
             text:'submit',
             formBind: true,
             handler:function(btn){
-                console.log("Hello ashish");
-                var data = this.up('form').getForm().getValues();
-               console.log("the form data is:", data);
-               // let store = this.getStore();
-            //  formstore. data.push({
-                
-            //         StudentName: data.StudentName,
-            //         FathersName: data.FathersName,
-            //         MothersName: data.MothersName,
-            //         DateOfBirth: data. DateOfBirth,
-            //         Class:  data.Class,
-            //         FeePaid:  data.FeePaid,
-            //         ExtraCircullar:  data.ExtraCircullar
-    
-    
-            //     });
+                debugger
+                //console.log("Hello ashish");
+                var values = this.up('form').getForm().getValues();
+                //console.log("the form data is:", data);
+                //console.log(Ext.getStore('formStore'))
+                //console.log(Ext.getStore('formstore'))
+                 //let store = this.up('form').getStore();
+                 Ext.getStore('formStore').data.add({
+                    studentname: values.studentname,
+                    fathersname: values.fathersname,
+                    mothersname: values.mothersname,
+                    dateOfbirth: values. DOB,
+                    class:  values.class,
+                    feepaid:  values.feepaid,
+                    extracircullar:  values.extracircullar    
+                });
                 console.log("Data push is done");
+               
             }
-            
-        },
+        },   
+    
         { 
             xtype:'button',
             text:'Reset',
             flex:1, 
-            handler:'resetForm'
+            handler:'reset'
         
         }
     ]

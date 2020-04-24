@@ -1,15 +1,10 @@
 Ext.define('AkApp.view.form.formController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.form',
-    /*views: [
-        'Formstore.List'
-    ],*/
-
-    //store: ['Formstore'],
-    //model: ['Formstore'],
+  require:['AkApp.view.form'],
 
     onButtonClick: function () {
-
+         debugger
         var form = this.up('form').getForm();
         console.log("form Data is",form.getValues());
         let store = this.getStore();
@@ -27,9 +22,7 @@ Ext.define('AkApp.view.form.formController', {
                 ExtraCircullar:  values.ExtraCircullar,
 
 
-            });
-            alert("Values Submitted")
-            alert(JSON.string)
+            });  
             console.log("form Data is",form.getValues())
 
         }

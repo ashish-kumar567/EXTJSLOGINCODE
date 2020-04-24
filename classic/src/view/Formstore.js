@@ -3,7 +3,7 @@ Ext.define('AkApp.view.main.Formstore', {
     xtype: 'formlist',
 
     requires: [
-        'AkApp.store.Formstore'
+        'AkApp.store.Formstore',
     ],
 
     title: 'Formstore',
@@ -11,29 +11,32 @@ Ext.define('AkApp.view.main.Formstore', {
     store: {
         type: 'formstore'
     },
+    
+   
+    // bind: {
+    //     store: '{formstore}'
+    // },
+
+    // handler: function() {
+    //     var gridPanel = Ext.ComponentQuery.query('grid[]')[0];
+    //     gridPanel.getStore().data.loadPage();
+    // },
+
 
     columns: [
         { text: 'StudentName', dataIndex: 'studentname', flex: 1},
         { text: 'FathersName', dataIndex: 'fathersname', flex: 1 },
-        { text: 'MothersName', dataIndex: 'mothesname', flex: 1 },
+        { text: 'MothersName', dataIndex: 'mothersname', flex: 1 },
         { text: 'DateofBirth', dataIndex: 'dateofbirth',flex: 1 },
         { text: 'Class', dataIndex: 'class',flex: 1 },
-       
         { text: 'FeePaid', dataIndex: 'feepaid',flex: 1 },
         { text: 'ExtraCircullar', dataIndex: 'extracircullar',flex: 1 }
-        
-
-        
-
-        
-
-
+    
     ],
-   
 
-    // listeners: {
-    //     select: 'onItemSelected'
-    // },
 
-  
+    listeners: {
+        select: 'onItemSelected'
+    },  
+
 });

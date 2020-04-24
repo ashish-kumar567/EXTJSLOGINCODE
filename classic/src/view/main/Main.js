@@ -105,7 +105,7 @@ Ext.define('AkApp.view.main.Main', {
         //     html: '{loremIpsum}'
         // }
         items: [{
-            xtype: 'login'
+            xtype: 'newgrid'
         }]
     },
     
@@ -118,10 +118,11 @@ Ext.define('AkApp.view.main.Main', {
         }]
     }, 
     {
-    //     title: 'Settings',
-    //     iconCls: 'fa-cog',
-    //     bind: {
-    //         html: 'The great Cricketer'
-    //     }
+        title: 'Settings',
+        iconCls: 'fa-cog',
+        
+        items:[{
+            xtype:'login'
+        }]
     }]
 });
