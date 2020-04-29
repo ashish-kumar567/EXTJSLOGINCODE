@@ -1,64 +1,87 @@
-Ext.define('AkApp.view.NewStore', {
+Ext.define('AkApp.view.main.NewStore', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.NewStore',
-    xtype:'newgrid',
+    xtype: 'newgrid',
 
-    require:['AkApp.store.Formstore'],
-    title: 'ChainedFormStore',
-    config: {},
-    constructor: function (config) {
-        return this.callParent(arguments);
-    },
-
-
-    views: ['AkApp.view.NewStore'],
-    stores: ['AkApp.store.Formstore', 'AkApp.store.FormChainedStore'],
- 
-    columnLines: true,
-    selModel:
-    {
-        mode: 'rowmodel'
-    },
-    viewConfig:
-    {
-        stripeRows: true
-    },
+    require: ['AkApp.store.Formstore'],
    
-    initComponent: function () {
 
-        Ext.apply(this, {
 
-            columns: [{
+    // config: {},
+    // constructor: function (config) {
+    //     return this.callParent(arguments);
+    // },
+    columnLines: true,
+    // selModel:
+    // {
+    //     mode: 'rowmodel'
+    // },
+    // viewConfig:
+    // {
+    //     stripeRows: true
+    // },
 
-            },
-            
-            { text: 'StudentName', dataIndex: 'studentname', flex: 1},
-            { text: 'DateofBirth', dataIndex: 'dateofbirth',flex: 1 },
 
-            ],
-            tbar:[
+    title: 'ChainedFormStore',
+    views: ['AkApp.view.NewStore'],
+    stores: ['AkApp.store.Formstore'],
+
+
+
+  
+
+            columns: [
+              
+
             {
-                xtype: 'combobox',
-                fieldLabel: 'Class',
-                name: 'class',
+
+                text: 'StudentName',
+                dataIndex: 'studentname',
+                flex: 1,
+
+                filter:{
+                    type:'string',
+                }
                
-                store: Ext.create('Ext.data.Store', {
-                    fields: ['abbr', 'name'],
-                    data: [
-                        {'abbr': 'Matric','name': 'Matric'},
-                        {'abbr': 'Intermediate', 'name': 'Intermediate' },
-                        {'abbr': 'B.tech','name': 'B.tech'}
-                    ]
-                 }),
-                 valueField: 'abbr',
-                 displayField: 'name'
-            }
-            ,
-        ],
+            },
+            {
+                text: 'DateofBirth',
+                dataIndex: 'dateofbirth',
+                flex: 1,
+               
+                filter:{
+                    type: 'string',
+                }
+            }         
+            ],
+            plugins : 'gridfilters', 
+            
+            
+            tbar: [
+                {
+                    xtype: 'combobox',
+                    fieldLabel: 'Class',
+                    name: 'class',
+
+                    store: Ext.create('Ext.data.Store', {
+                        fields: ['abbr', 'name'],
+                        data: [
+                            { 'abbr': 'Matric', 'name': 'Matric' },
+                            { 'abbr': 'Intermediate', 'name': 'Intermediate' },
+                            { 'abbr': 'B.tech', 'name': 'B.tech' }
+                            
+                        ]
+                    }),
+                    valueField: 'abbr',
+                    displayField: 'name'
+                }
+            ],
             listeners: {
                 select: 'onItemSelected'
             },
-        });
-   this.callParent(arguments);
-    }    
+     
+
+
 });
+
+    

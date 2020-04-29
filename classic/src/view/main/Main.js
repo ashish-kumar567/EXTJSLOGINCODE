@@ -16,14 +16,12 @@ Ext.define('AkApp.view.main.Main', {
         'AkApp.view.main.MainController',
         'AkApp.view.main.MainModel',
         'AkApp.view.main.List',
-       
-        
-        
+
     ],
 
     controller: 'main',
     viewModel: 'main',
-    plugins:'viewport',
+    plugins: 'viewport',
     ui: 'navigation',
 
     tabBarHeaderPosition: 1,
@@ -80,24 +78,28 @@ Ext.define('AkApp.view.main.Main', {
     items: [{
         title: 'Home',
         iconCls: 'fa-home',
-        // The following grid shares a store with the classic version's grid as well!
+
         items: [{
             xtype: 'newform',
-    
+
         }],
     },
-    
+
     {
         title: 'UserData',
         iconCls: 'fa-users',
-        
-        items:[{
-            xtype:'formlist'
+        items: [{
+            xtype: 'formlist'
+        },
+        {
+          items: [{
+                xtype: 'newgrid'
+            }]
+
         }]
+
     },
-    
-    
-    
+
     {
         title: 'Users',
         iconCls: 'fa-user',
@@ -108,21 +110,31 @@ Ext.define('AkApp.view.main.Main', {
             xtype: 'newgrid'
         }]
     },
-    
+
     {
         title: 'Groups',
         iconCls: 'fa-users',
-        
-        items:[{
-            xtype:'datalist'
+
+        items: [{
+            xtype: 'datalist'
         }]
-    }, 
+    },
     {
         title: 'Settings',
         iconCls: 'fa-cog',
-        
-        items:[{
-            xtype:'login'
+        items: [{
+            xtype: 'login'
         }]
-    }]
+    },
+    {
+        title: 'View-ModelForm ',
+        iconCls: 'fa-cog',
+
+        items: [{
+            xtype: 'myForm'
+        }]
+    },
+
+
+  ]
 });

@@ -1,10 +1,22 @@
 Ext.define('AkApp.store.FormChainedStore', {
     extend: 'Ext.data.ChainedStore',
+    //alias:'store.chainedstore',
     source:'AkApp.store.Formstore',
-    sorters: [{
-        property: 'studentname,dateofbirth',
+    storeId: 'MyChainedStore',
+    model:' AkApp.model.Formstore',
+    autoLoad: 'true',
+    sorters: [
+        {
+        property: 'studentname',
+        direction: 'desc',
+        store:'AkApp.store.Formstore',
+        
+       },
+       {
+        property: 'dateofbirth',
         direction: 'ASC'
-    }],
+       }
+],
 
     data: {
         items: [
@@ -21,17 +33,8 @@ Ext.define('AkApp.store.FormChainedStore', {
         type: 'memory',
         reader: {
             type: 'json',
-            rootProperty: 'items'
+            rootProperty: 'data'
         }
     }
-
-
-
-
-
-
-
-
-
 
 });

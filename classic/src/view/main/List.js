@@ -15,6 +15,14 @@ Ext.define('AkApp.view.main.List', {
         type: 'personnel'
     },
 
+
+    bbar:{
+        xtype:'pagingtoolbar',
+           displayInfo:'true',
+        },
+   
+
+
     columns: [
         { text: 'Name', dataIndex: 'name' },
         { text: 'Email', dataIndex: 'email', flex: 1 },

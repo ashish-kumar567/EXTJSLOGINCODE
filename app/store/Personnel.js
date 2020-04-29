@@ -3,6 +3,7 @@ Ext.define('AkApp.store.Personnel', {
     alias: 'store.personnel',
 
     model: 'AkApp.model.Personnel',
+    pageSize:2,
 
     data: {
         items: [
